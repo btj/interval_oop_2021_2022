@@ -10,9 +10,17 @@ package interval_oop;
  */
 public class Interval {
 	
-	public int getLowerBound() { throw new RuntimeException("Not yet implemented"); }
-	public int getUpperBound() { throw new RuntimeException("Not yet implemented"); }
-	public int getLength() { throw new RuntimeException("Not yet implemented"); }
+	/**
+	 * Representation invariant:
+	 * 
+	 * @invar | 0 <= length
+	 */
+	private int lowerBound;
+	private int length;
+	
+	public int getLowerBound() { return lowerBound; }
+	public int getUpperBound() { return lowerBound + length; }
+	public int getLength() { return length; }
 	
 	/**
 	 * Initializes this object to store the interval with the given lower bound and upper bound.
@@ -22,7 +30,10 @@ public class Interval {
 	 * @post | getLowerBound() == lowerBound
 	 * @post | getUpperBound() == upperBound
 	 */
-	public Interval(int lowerBound, int upperBound) { throw new RuntimeException("Not yet implemented"); }
+	public Interval(int lowerBound, int upperBound) {
+		this.lowerBound = lowerBound;
+		this.length = upperBound - lowerBound;
+	}
 	
 	/**
 	 * Shifts the interval stored by this object to the right by the given amount.
@@ -30,6 +41,8 @@ public class Interval {
 	 * @post | getLowerBound() == old(getLowerBound()) + amount
 	 * @post | getUpperBound() == old(getUpperBound()) + amount
 	 */
-	public void shift(int amount) { throw new RuntimeException("Not yet implemented"); }
+	public void shift(int amount) {
+		lowerBound += amount;
+	}
 
 }
